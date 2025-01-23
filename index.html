@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pet Vision AI - Advanced Cat & Dog Breed Detection System"
+    />
+    <title>Pet Vision AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container" role="main">
+      <div class="header">
+        <h1>Pet Vision AI</h1>
+        <p>Advanced Cat & Dog Breed Detection System</p>
+      </div>
+
+      <div class="upload-container">
+        <input
+          type="file"
+          id="file-input"
+          accept="image/*"
+          aria-label="Upload pet image"
+        />
+        <button
+          class="upload-btn"
+          onclick="document.getElementById('file-input').click()"
+          aria-label="Choose image to upload"
+        >
+          <i class="fas fa-upload" aria-hidden="true"></i> Choose Image
+        </button>
+      </div>
+
+      <div class="loading" role="status" aria-live="polite">
+        <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+        <p>Analyzing image...</p>
+      </div>
+
+      <div
+        id="imageContainer"
+        role="region"
+        aria-label="Image analysis results"
+      >
+        <img id="image" src="" alt="Uploaded pet image" />
+        <div class="prediction-badge" id="prediction" aria-live="polite"></div>
+      </div>
+
+      <div class="feedback" id="feedback" role="alert" aria-live="polite"></div>
+
+      <div class="breed-info" id="breedInfo">
+        <h3 id="breedTitle"></h3>
+        <p id="breedText"></p>
+        <a id="breedLink" href="#" target="_blank">Learn more on Wikipedia</a>
+      </div>
+
+      <div
+        class="related-images-title"
+        id="relatedImagesTitle"
+        role="heading"
+        aria-level="2"
+      ></div>
+      <div
+        class="related-images"
+        id="relatedImages"
+        role="region"
+        aria-label="Related pet images"
+      ></div>
+    </div>
+
+    <div class="api-status" id="apiStatus" role="status" aria-live="polite">
+      <div>
+        API Calls Remaining: <span class="count" id="apiCount">--</span>
+      </div>
+      <div class="api-limit-warning" id="apiWarning"></div>
+      <div class="timer-container">
+        <i class="fas fa-clock timer-icon" aria-hidden="true"></i>
+        <span id="resetTime">--:--:--</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
